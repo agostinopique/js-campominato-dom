@@ -24,12 +24,6 @@ main {
 
 /* HEADER */
 
-/* MAIN */
-
-#logo {
-    height: 20px;
-    border: 1px solid white;
-}
 
 /* /HEADER */
 
@@ -54,9 +48,6 @@ span {
     display: none;
 }
 
-.light {
-    background-color: rgb(81, 133, 246);
-}
 .square_100 {
     width: calc(100% / 10);
     height: calc(100% / 10);
@@ -72,13 +63,14 @@ span {
     height: calc(100% / 7);
 }
 
-.odd{
+.bomb{
     background-color: red;
 }
 
-.even {
-    background-color: rgb(0, 155, 211);
+.light {
+    background-color: rgb(81, 133, 246);
 }
+
 
 div.square.clicked  span {
     display: block;

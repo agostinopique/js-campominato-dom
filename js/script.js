@@ -14,10 +14,13 @@ Devo creare una funzione che estrae randomicamente un numero a seconda della dif
 
 const MAP_BOMBS = 16;
 
-document.getElementById('difficulty-btn').addEventListener('click', getDifficulty);
+let bombArr = [];
 
 const grid = document.querySelector('.ap_container')
-const arrRandomNumber = [];
+
+document.getElementById('difficulty-btn').addEventListener('click', getDifficulty);
+
+// const arrRandomNumber = [];
 
 // Funzione che determina quanti quadratini devono andare nella griglia a seconda del value del select;
 
@@ -44,14 +47,14 @@ function getDifficulty() {
     for(let i = 1; i <= squareNumber; i++){
         // Richiamo e appendo le celle dalla funzione dedicata
         const cell = cellGenerator(i, squareNumber);
-        grid.appendChild(cell);
-
+        grid.append(cell);
     }
 
-    console.log(grid);
+    // console.log(grid);
 
     const casualNumber = getRandomNumber(1, squareNumber);
-    const bomb = bombGenerator(squareNumber);
+    
+    bombArr = bombGenerator(squareNumber);
 }
 
 
@@ -63,20 +66,23 @@ function getDifficulty() {
  */
 function cellGenerator(n, squareNumber){
     const sq = document.createElement('div');
-/* 
+
     // Altermativa che da le misure delle celle in maniera dinamica
     const cellFactor = Math.sqrt(squareNumber);
-    const cellSize = `calc(100% / ${cellFactor});
+    const cellSize = `calc(100% / ${cellFactor})`;
     sq.style.width = cellSize;
     sq.style.height = cellSize;
-     */
-    sq.className = 'square square_' + squareNumber;
+
+    // sq.className = 'square square_' + squareNumber;
+    sq.className = 'square';
 
     // Soluzione per l'insrimento dei numeri in succcessione
     // sq.innerHTML = `<span>${n}</span>`;
 
     //  Soluzione per l'inserimento dei numeri random
-    sq.innerHTML = `<span>${getRandomNumber(1, squareNumber)}</span>`;
+    sq.innerHTML = `<span>${n}</span>`;
+
+    
 
     // aggiungo le classi al click della singola cella (this)
     sq.addEventListener('click', clickedCell);
@@ -84,11 +90,24 @@ function cellGenerator(n, squareNumber){
     return sq;
 }
 
+
 /**
- * aggiunge le classi di stile al click della cella;
+ * aggiunge le classi di stile al click della cella controllando che il numero sia una cella buona o una cella con una bomba;
  */
 function clickedCell(){
-    this.classList.add('clicked', 'light')
+
+    this.classList.add('clicked');
+
+    if(!bombArr.includes(parseInt(this.innerText))){
+
+        this.classList.add('light');
+
+    } else {
+
+        this.classList.add('bomb');
+
+    }
+
 }
 
 
@@ -123,5 +142,6 @@ function bombGenerator(squareNumber){
     }
 
     console.log(generatedBomb);
+
     return generatedBomb;
 }
