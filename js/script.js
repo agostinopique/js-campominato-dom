@@ -16,9 +16,11 @@ const MAP_BOMBS = 16;
 
 let bombArr = [];
 
-const grid = document.querySelector('.ap_container')
+const grid = document.querySelector('.ap_container');
+const main = document.querySelector('.center_section');
 
-document.getElementById('difficulty-btn').addEventListener('click', getDifficulty);
+
+const button = document.getElementById('difficulty-btn').addEventListener('click', playBtn);
 
 // const arrRandomNumber = [];
 
@@ -27,7 +29,7 @@ document.getElementById('difficulty-btn').addEventListener('click', getDifficult
 /*
  * Creo un numero di celle n dettate dalla difficoltá selezionata dall'utente, stampo il numero estratto randomicamente dalla funzione.
  */
-function getDifficulty() {
+function playBtn() {
     // Modifica il testo del pulsante al click
     this.innerHTML = 'Reset';
 
@@ -42,21 +44,19 @@ function getDifficulty() {
 
     // resetto la griglia
     grid.innerHTML = '';
+    grid.classList.remove('silence');
+    // main.remove('#results');
     
+
     // genero le celle
     for(let i = 1; i <= squareNumber; i++){
         // Richiamo e appendo le celle dalla funzione dedicata
         const cell = cellGenerator(i, squareNumber);
         grid.append(cell);
     }
-
-    // console.log(grid);
-
-    const casualNumber = getRandomNumber(1, squareNumber);
     
     bombArr = bombGenerator(squareNumber);
 }
-
 
 /**
  * creo il contenitore delle celle all'interno del quale vado ad insrire i vari elementi
@@ -83,9 +83,13 @@ function cellGenerator(n, squareNumber){
     sq.innerHTML = `<span>${n}</span>`;
 
     
-
+let CountButtonHomeClicks = 0;
     // aggiungo le classi al click della singola cella (this)
-    sq.addEventListener('click', clickedCell);
+    sq.addEventListener('click', clickedCell, function(){
+        CountButtonHomeClicks += 1;
+        console.log(CountButtonHomeClicks);
+    });
+
 
     return sq;
 }
@@ -96,6 +100,14 @@ function cellGenerator(n, squareNumber){
  */
 function clickedCell(){
 
+    // let clicks = 0;
+    // this.onclick = function() {
+    //     clicks += 1;
+    // }
+    // console.log(clicks);
+
+    const resultAnn = document.getElementById('results');
+
     this.classList.add('clicked');
 
     if(!bombArr.includes(parseInt(this.innerText))){
@@ -105,7 +117,8 @@ function clickedCell(){
     } else {
 
         this.classList.add('bomb');
-
+        grid.classList.add('silence');
+        resultAnn.innerHTML = `<h3>Hai perso dopo tentativi!</h3>`
     }
 
 }
@@ -145,3 +158,4 @@ function bombGenerator(squareNumber){
 
     return generatedBomb;
 }
+

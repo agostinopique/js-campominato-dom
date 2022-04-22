@@ -17,9 +17,8 @@ header, footer {
 main {
     background-color: #0a0a99;
     height: calc(100vh - 160px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
 }
 
 /* HEADER */
@@ -32,7 +31,6 @@ main {
 .ap_container {
     width: 600px;
     height: 600px;
-    border: 3px solid white;
     margin: auto;
     overflow: hidden;
 }
@@ -77,8 +75,8 @@ div.square.clicked  span {
 }
 
 
+.silence {
+    pointer-events: none;
+}
+
 /* /MAIN */
-
-
-/* FOOTER */
-/* /FOOTER */
