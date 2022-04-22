@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="campo-minato">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.css' integrity='sha512-c9N/Xq0n4rQdyCXF4RgrRYAAOSnNJDp8NWILsSUx+33zWyaMbXXvqajgO0UXybRdTGVpxq3FBrcGwabkWsT8OA==' crossorigin='anonymous'/>
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Campo Minato</title>
+</head>
+<body>
+    <header>
+        <div class="container h-100 d-flex align-items-center">
+            <div class="row row-cols-2 w-100 align-items-center justify-content-between">
+
+                <div id="logo" class="col">
+
+                </div>
+
+                <div class="col difficulty_select d-flex align-items-center">
+
+                    <div class="w-100 d-flex align-items-center">
+                        
+                        <label for="difficulty-selector" class="me-2">Difficolt&agrave;:</label>
+                        <select class="form-select w-75" id="difficulty-selector">
+                            <option value="0">Easy - 100</option>
+                            <option value="1">Medium - 81</option>
+                            <option value="2">Evil - 49</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary ms-1" id="difficulty-btn">Play!</button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <main class="w-100">
+        <div class="ap_container d-flex flex-wrap align-content-start"></div>
+    </main>
+    <footer></footer>
+    <script src="./js/script.js"></script>
+</body>
+</html>

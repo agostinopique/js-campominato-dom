@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+header, footer {
+    height: 80px;
+    background-color: #233957;
+}
+
+main {
+    background-color: #0a0a99;
+    height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HEADER */
+
+/* MAIN */
+
+#logo {
+    height: 20px;
+    border: 1px solid white;
+}
+
+/* /HEADER */
+
+
+/* MAIN */
+.ap_container {
+    width: 600px;
+    height: 600px;
+    border: 3px solid white;
+    margin: auto;
+    overflow: hidden;
+}
+
+.square {
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span {
+    display: none;
+}
+
+.light {
+    background-color: rgb(81, 133, 246);
+}
+.square_100 {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.square_81 {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.square_49 {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.odd{
+    background-color: red;
+}
+
+.even {
+    background-color: rgb(0, 155, 211);
+}
+
+div.square.clicked  span {
+    display: block;
+}
+
+
+/* /MAIN */
+
+
+/* FOOTER */
+/* /FOOTER */
