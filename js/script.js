@@ -12,11 +12,11 @@ Devo creare una funzione che estrae randomicamente un numero a seconda della dif
 */
 
 
+const MAP_BOMBS = 16;
 
 document.getElementById('difficulty-btn').addEventListener('click', getDifficulty);
 
 const grid = document.querySelector('.ap_container')
-const MAP_BOMBS = 16;
 const arrRandomNumber = [];
 
 // Funzione che determina quanti quadratini devono andare nella griglia a seconda del value del select;
@@ -113,14 +113,12 @@ function getRandomNumber(min, max) {
 function bombGenerator(squareNumber){
     const generatedBomb = [];
 
-    // crea una logica che estrae un numero random finché il numero di bombe presenti nella mappa non viene raggiunto. Controlla se il numero estratto é presente nell'array di verifica e, se non presente viene incluso nell'array delle bombe, se invece é presente continuo ad estrarre finché non raggiunge il numero di bombe;
+    while(generatedBomb.length < MAP_BOMBS) {
 
-    while(generatedBomb < MAP_BOMBS) {
         const bombNum = getRandomNumber(1, squareNumber);
 
         if(!generatedBomb.includes(bombNum)){
             generatedBomb.push(bombNum);
-            
         }
     }
 
