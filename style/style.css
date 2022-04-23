@@ -19,6 +19,8 @@ main {
     height: calc(100vh - 160px);
     text-align: center;
     padding: 20px 0;
+    position: relative;
+    overflow: hidden;
 }
 
 /* HEADER */
@@ -32,7 +34,10 @@ main {
     width: 600px;
     height: 600px;
     margin: auto;
-    overflow: hidden;
+}
+
+.loser_grid {
+    opacity: 0.4;
 }
 
 .square {
@@ -74,9 +79,11 @@ div.square.clicked  span {
     display: block;
 }
 
-
-.silence {
-    pointer-events: none;
+#results {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* /MAIN */
