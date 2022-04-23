@@ -17,14 +17,18 @@ const MAP_BOMBS = 16;
 let bombArr = [];
 
 const grid = document.querySelector('.ap_container');
+
 const main = document.querySelector('.center_section');
 
+let click = 0;
 
 const button = document.getElementById('difficulty-btn').addEventListener('click', playBtn);
 
 // const arrRandomNumber = [];
 
 // Funzione che determina quanti quadratini devono andare nella griglia a seconda del value del select;
+
+
 
 /*
  * Creo un numero di celle n dettate dalla difficoltá selezionata dall'utente, stampo il numero estratto randomicamente dalla funzione.
@@ -44,7 +48,11 @@ function playBtn() {
 
     // resetto la griglia
     grid.innerHTML = '';
-    grid.classList.remove('silence');
+    grid.classList.remove('pe-none');
+    document.getElementById('results').innerHTML = '';
+    click = 0;
+
+
     // main.remove('#results');
     
 
@@ -57,6 +65,9 @@ function playBtn() {
     
     bombArr = bombGenerator(squareNumber);
 }
+
+
+
 
 /**
  * creo il contenitore delle celle all'interno del quale vado ad insrire i vari elementi
@@ -82,8 +93,8 @@ function cellGenerator(n, squareNumber){
     //  Soluzione per l'inserimento dei numeri random
     sq.innerHTML = `<span>${n}</span>`;
 
-    
-let CountButtonHomeClicks = 0;
+
+    let CountButtonHomeClicks = 0;
     // aggiungo le classi al click della singola cella (this)
     sq.addEventListener('click', clickedCell, function(){
         CountButtonHomeClicks += 1;
@@ -93,6 +104,9 @@ let CountButtonHomeClicks = 0;
 
     return sq;
 }
+
+
+
 
 
 /**
@@ -113,15 +127,19 @@ function clickedCell(){
     if(!bombArr.includes(parseInt(this.innerText))){
 
         this.classList.add('light');
+        click++;
 
     } else {
 
         this.classList.add('bomb');
-        grid.classList.add('silence');
-        resultAnn.innerHTML = `<h3>Hai perso dopo tentativi!</h3>`
+        grid.classList.add('pe-none');
+        resultAnn.innerHTML = `<h3>Hai perso dopo ${click} tentativi!</h3>`
     }
 
 }
+
+
+
 
 
 /**
@@ -136,6 +154,11 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 
 }
+
+
+
+
+
 
 /**
  * Crea bombe casuali ad ogni partita
