@@ -40,6 +40,9 @@ function playBtn() {
     // Modifica il testo del pulsante al click
     this.innerHTML = 'Reset';
 
+    const gameStart = new Audio('audio_file/smb_powerup.wav');
+    gameStart.play();
+
     // prendo il valore della difficoltá
     const squares = document.querySelector('#difficulty-selector').value; 
 
@@ -64,13 +67,13 @@ function playBtn() {
         const cell = cellGenerator(i, squareNumber);
         grid.append(cell);
 
-        // Alternativa per lo scoppio di tutte le bombe, continua a riga 135;
+        // Alternativa per lo scoppio di tutte le bombe, continua a riga 140;
         if(bombArr.includes(i)) {
             elementBombs.push(cell);
         }
     }
-    console.log('elementi bombe', elementBombs);
-    console.log('bombe array', bombArr);
+    // console.log('elementi bombe', elementBombs);
+    // console.log('bombe array', bombArr);
     
 }
 
@@ -127,6 +130,8 @@ function clickedCell(){
 
         this.classList.add('light');
         click++;
+        const cellClick = new Audio('audio_file/smb_fireball.wav');
+        cellClick.play();
 
     } else {
 
@@ -140,6 +145,9 @@ function clickedCell(){
 
         grid.classList.add('pe-none', 'loser_grid');
         resultAnn.innerHTML = `<h3>Hai perso dopo ${click} tentativi!</h3>`
+
+        const gameOver = new Audio('audio_file/smb_gameover.wav');
+        gameOver.play();
 
         // Alternativa per lo scoppio di tutte le bombe
         // loserGame();
@@ -179,9 +187,12 @@ function loserGame(){
  */
 function winnerGame(resultAnn){
 
-    if(click === 15){
+    if(click === 12){
         resultAnn.innerHTML = `<h3>Hai Vinto dopo ${click} tentativi!</h3>`
         grid.classList.add('pe-none', 'loser_grid');
+
+        const gameWin = new Audio('audio_file/smb_stage_clear.wav');
+        gameWin.play();
     }
 }
 
@@ -223,7 +234,7 @@ function bombGenerator(squareNumber){
         }
     }
 
-    console.log(generatedBomb);
+    // console.log(generatedBomb);
 
     return generatedBomb;
 }
